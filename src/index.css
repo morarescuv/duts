@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ── Design tokens ───────────────────────────────────────── */
+:root {
+  --bg:      0 0% 4%;
+  --surface: 0 0% 8%;
+  --text:    0 0% 96%;
+  --muted:   0 0% 53%;
+  --stroke:  0 0% 12%;
+  --accent:  0 0% 96%;
+}
+
+/* ── Tailwind v4 theme ───────────────────────────────────── */
+@theme inline {
+  --color-bg:           hsl(var(--bg));
+  --color-surface:      hsl(var(--surface));
+  --color-text-primary: hsl(var(--text));
+  --color-muted:        hsl(var(--muted));
+  --color-stroke:       hsl(var(--stroke));
+}
+
+@theme {
+  --font-body:    'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: hsl(var(--bg));
+  color: hsl(var(--text));
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { width: 100%; }
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes scroll-down {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(200%);  }
+}
+
+@keyframes role-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Custom utilities ────────────────────────────────────── */
+@layer utilities {
+  .accent-gradient {
+    background: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  }
+
+  .animate-scroll-down {
+    animation: scroll-down 1.5s ease-in-out infinite;
+  }
+
+  .animate-role-fade-in {
+    animation: role-fade-in 0.4s ease-out forwards;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 6s ease infinite;
+    background-size: 200% 200%;
+  }
+}
+
+/* ── Gradient border buttons ─────────────────────────────── */
+/* Solid (white fill → dark + gradient border on hover) */
+.gb-solid {
+  border: 2px solid transparent;
+  background-color: hsl(var(--text));
+  color: hsl(var(--bg));
+  transition: all 0.3s ease;
+}
+.gb-solid:hover {
+  background-image:
+    linear-gradient(hsl(var(--bg)), hsl(var(--bg))),
+    linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  color: hsl(var(--text));
+}
+
+/* Outline (stroke border → gradient border on hover) */
+.gb-outline {
+  border: 2px solid hsl(var(--stroke));
+  background-color: hsl(var(--bg));
+  color: hsl(var(--text));
+  transition: all 0.3s ease;
+}
+.gb-outline:hover {
+  border-color: transparent;
+  background-image:
+    linear-gradient(hsl(var(--bg)), hsl(var(--bg))),
+    linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Ghost (muted text, thin stroke border → gradient border on hover) */
+.gb-ghost {
+  border: 1px solid hsl(var(--stroke));
+  background-color: transparent;
+  color: hsl(var(--muted));
+  transition: all 0.3s ease;
+}
+.gb-ghost:hover {
+  border-color: transparent;
+  color: hsl(var(--text));
+  background-image:
+    linear-gradient(hsl(var(--bg)), hsl(var(--bg))),
+    linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+}
