@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Work', href: '/portfolio' },
+  { label: 'Achievements', href: '/achievements' },
   { label: 'Services', href: '/#services' },
 ]
 
@@ -15,6 +16,8 @@ export default function Navbar() {
   const active =
     location.pathname === '/portfolio'
       ? 'Work'
+      : location.pathname === '/achievements'
+        ? 'Achievements'
       : location.hash === '#services'
         ? 'Services'
         : 'Home'

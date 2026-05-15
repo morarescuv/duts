@@ -6,6 +6,9 @@ import NotFound from './pages/NotFound'
 import ProjectDetail from './pages/ProjectDetail'
 import AgroDataThought from './pages/AgroDataThought'
 import Portfolio from './pages/Portfolio'
+import PlatefulProject from './pages/PlatefulProject'
+import Achievements from './pages/Achievements'
+import AmiabilProject from './pages/AmiabilProject'
 
 function Page({ children }: { children: ReactNode }) {
   return (
@@ -35,6 +38,22 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/work/plateful"
+          element={
+            <Page>
+              <PlatefulProject />
+            </Page>
+          }
+        />
+        <Route
+          path="/work/amiabil"
+          element={
+            <Page>
+              <AmiabilProject />
+            </Page>
+          }
+        />
+        <Route
           path="/work/:slug"
           element={
             <Page>
@@ -47,6 +66,14 @@ function AnimatedRoutes() {
           element={
             <Page>
               <Portfolio />
+            </Page>
+          }
+        />
+        <Route
+          path="/achievements"
+          element={
+            <Page>
+              <Achievements />
             </Page>
           }
         />

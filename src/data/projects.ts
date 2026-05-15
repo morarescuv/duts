@@ -19,15 +19,30 @@ export interface ExplorationCard extends Project {
 
 export const explorationCards: ExplorationCard[] = [
   {
+    slug: 'plateful',
+    title: 'Plateful',
+    category: 'HoReCa Analytics · Current MVP',
+    year: 'In testing',
+    description:
+      'Analytics platform for HoReCa businesses that transforms POS data into predictive insights, enabling accurate sales forecasting, reduced waste, and improved operational efficiency.',
+    services: ['Forecasting', 'Business Management', 'Data Visualization', 'MVP'],
+    image: '/plateful/dashboard.png',
+    rotation: -2,
+    parallaxFrom: 560,
+    parallaxTo: -200,
+    startOffset: 160,
+    endOffset: 80,
+    column: 1,
+  },
+  {
     slug: 'amiabil',
     title: 'Amiabil.md',
     category: 'GovTech Platform',
     year: '2025',
     description:
-      'Government-backed digital platform that helps drivers resolve minor accidents without police involvement through a simplified, paperless process.',
-    services: ['Product Design', 'UX/UI', 'Design Systems', 'Frontend'],
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&q=80',
+      'Government-backed digital platform for resolving minor car accidents without police involvement by turning a confusing paper-based procedure into a fast, guided, digital insurance workflow.',
+    services: ['Product Design', 'UX/UI', 'GovTech', 'Insurance Workflow'],
+    image: 'https://img.youtube.com/vi/RQE6iS958zM/maxresdefault.jpg',
     rotation: -3,
     parallaxFrom: 360,
     parallaxTo: -120,
@@ -50,23 +65,6 @@ export const explorationCards: ExplorationCard[] = [
     parallaxTo: -160,
     startOffset: 80,
     endOffset: 40,
-    column: 1,
-  },
-  {
-    slug: 'plateful',
-    title: 'Plateful',
-    category: 'HoReCa Analytics',
-    year: '2024',
-    description:
-      'Analytics platform for HoReCa businesses that transforms POS data into predictive insights, sales forecasting, and operational efficiency.',
-    services: ['UX/UI', 'Data Visualization', 'Web App'],
-    image:
-      'https://images.unsplash.com/photo-1618172193622-ae2d025f4032?w=900&q=80',
-    rotation: -2,
-    parallaxFrom: 560,
-    parallaxTo: -200,
-    startOffset: 160,
-    endOffset: 80,
     column: 1,
   },
   {
