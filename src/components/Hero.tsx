@@ -88,10 +88,9 @@ export default function Hero() {
         </p>
 
         {/* Name */}
-        <h1 className="name-reveal text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6">
-          DUTS
-        </h1>
-
+<div className="flex justify-center">
+  <img src="/logo.png" alt="DUTS" className="w-72 h-auto my-8" />
+</div>
         {/* Role tagline */}
         <p className="blur-in text-sm md:text-base text-muted mb-4 max-w-xs sm:max-w-none mx-auto">
           A{' '}

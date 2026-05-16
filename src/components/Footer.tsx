@@ -18,20 +18,7 @@ export default function Footer() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const marqueeRef = useRef<HTMLDivElement>(null)
 
-  /* ── HLS video (flipped) ── */
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-    if (Hls.isSupported()) {
-      const hls = new Hls({ startLevel: -1 })
-      hls.loadSource(HLS_SRC)
-      hls.attachMedia(video)
-      return () => hls.destroy()
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = HLS_SRC
-    }
-  }, [])
-
+ 
   /* ── GSAP marquee ── */
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -86,7 +73,7 @@ export default function Footer() {
             className="gb-ghost inline-flex items-center gap-2 rounded-full text-lg sm:text-xl md:text-3xl font-display italic px-6 sm:px-8 py-4 break-all"
             style={{ fontStyle: 'italic' }}
           >
-            hello@duts.agency ↗
+            morarescu.business@gmail.com ↗
           </a>
         </div>
 

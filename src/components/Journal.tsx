@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
@@ -6,34 +7,27 @@ const ENTRIES = [
     id: 1,
     title: 'AgroData at GigaHack Hackathon Deep Tech 2025',
     readTime: '5 min read',
-    date: 'Apr 2025',
-    image: 'https://images.unsplash.com/photo-1492496913980-501348b61469?w=200&q=80',
-    href: '/thoughts/agrodata-gigahack',
+    date: 'Sep 2025',
+    image: 'public/agrodata/general-presentation.jpg',
+    href: '/work/agrodata',
   },
   {
     id: 2,
-    title: 'How branding systems help startups move faster',
+    title: 'Co-worked with the Ministry of Internal Affairs',
     readTime: '4 min read',
     date: 'Mar 2025',
-    image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=200&q=80',
-    href: '#',
+    image: 'public/amiabil/payment.png',
+    href: '/work/amiabil',
   },
   {
     id: 3,
-    title: 'Turning POS data into predictive insights for HoReCa businesses',
+    title: 'Acum Community - Re-branding',
     readTime: '6 min read',
     date: 'Feb 2025',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&q=80',
-    href: '#',
+    image: 'public/ACUM/Artboard 1.png',
+    href: '/work/brand-identity',
   },
-  {
-    id: 4,
-    title: 'Where AI integrations meet product design',
-    readTime: '7 min read',
-    date: 'Jan 2025',
-    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&q=80',
-    href: '#',
-  },
+  
 ]
 
 export default function Journal() {
