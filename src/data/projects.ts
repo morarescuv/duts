@@ -58,8 +58,7 @@ export const explorationCards: ExplorationCard[] = [
     description:
       'Data-driven agricultural platform that helps farmers collect, manage, and share farm data while unlocking rewards and financial opportunities.',
     services: ['Branding', 'Product Design', 'Web Platform'],
-    image:
-      'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=900&q=80',
+    image: '/agrodata/general-presentation.jpg',
     rotation: 2,
     parallaxFrom: 460,
     parallaxTo: -160,
@@ -74,8 +73,7 @@ export const explorationCards: ExplorationCard[] = [
     year: '2023',
     description: 'A curated collection of logos and visual identity marks created by DUTS.',
     services: ['Logo Design', 'Visual Identity', 'Art Direction'],
-    image:
-      'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=900&q=80',
+    image: '/logo-folio/logo-01.jpg',
     rotation: 3,
     parallaxFrom: 420,
     parallaxTo: -140,
@@ -85,14 +83,13 @@ export const explorationCards: ExplorationCard[] = [
   },
   {
     slug: 'brand-identity',
-    title: 'Brand Identity System',
+    title: 'ACUM Re-branding',
     category: 'Branding',
     year: '2023',
     description:
-      'Brand identity work including logos, typography, colors, visual systems, and marketing assets.',
+      'A bold, minimal identity system for ACUM Community built with fluid shapes, directional arrows, and a strong red palette.',
     services: ['Brand Strategy', 'Design System', 'Marketing'],
-    image:
-      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=900&q=80',
+    image: '/ACUM/Artboard 1.png',
     rotation: -1,
     parallaxFrom: 520,
     parallaxTo: -190,
@@ -102,14 +99,13 @@ export const explorationCards: ExplorationCard[] = [
   },
   {
     slug: 'saas-demo',
-    title: 'SaaS Product Demo',
-    category: 'Product Design',
-    year: '2025',
+    title: 'Ferma Maxian Rebranding',
+    category: 'Branding',
+    year: '2023',
     description:
-      'SaaS application concept and client project demo focused on UX, interface design, and scalable product structure.',
-    services: ['UX/UI', 'Prototyping', 'Frontend'],
-    image:
-      'https://images.unsplash.com/photo-1618588507085-c79565432917?w=900&q=80',
+      'A meat-focused grocery brand built on tradition, quality, and authenticity. The identity combines vintage-inspired typography with detailed hand-drawn illustrations.',
+    services: ['Brand Strategy', 'Packaging Design', 'Visual Identity'],
+    image: '/Maxian/1.jpg',
     rotation: 1,
     parallaxFrom: 620,
     parallaxTo: -230,

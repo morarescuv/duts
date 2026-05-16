@@ -29,7 +29,7 @@ export default function Explorations() {
       )
 
       cards.forEach(card => {
-        const fromY = Number(card.dataset.fromy ?? '180')
+        const fromY = Number(card.dataset.fromy ?? '100')
         const toY = Number(card.dataset.toy ?? '-120')
         const startOffset = Number(card.dataset.start ?? '0')
         const endOffset = Number(card.dataset.end ?? '0')
@@ -38,8 +38,8 @@ export default function Explorations() {
 
         gsap.set(card, { willChange: 'transform', rotation })
 
-        const base = 220
-        const span = 1050
+        const base = window.innerWidth < 768 ? 140 : 220
+        const span = window.innerWidth < 768 ? 780 : 1050
 
         gsap.fromTo(
           card,
@@ -58,6 +58,8 @@ export default function Explorations() {
           },
         )
       })
+
+      requestAnimationFrame(() => ScrollTrigger.refresh())
     }, sectionRef)
 
     return () => ctx.revert()
@@ -67,12 +69,12 @@ export default function Explorations() {
     <>
       <section
         ref={sectionRef}
-        className="relative min-h-[160vh] md:min-h-[190vh] bg-bg overflow-hidden"
+        className="relative min-h-[225vh] md:min-h-[240vh] bg-bg overflow-hidden"
       >
         {/* Layer 1 — Pinned center content */}
         <div
           ref={contentRef}
-          className="relative z-30 md:z-10 h-[100svh] flex items-center justify-center pointer-events-none"
+          className="relative z-40 md:z-10 h-[100svh] flex items-center justify-center pointer-events-none"
         >
           <div className="text-center max-w-[340px] px-6 py-6 rounded-[26px] bg-bg/95 border border-stroke shadow-2xl shadow-black/40 md:max-w-none md:px-6 md:py-0 md:rounded-none md:bg-transparent md:border-0 md:shadow-none">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -82,16 +84,19 @@ export default function Explorations() {
               </span>
               <div className="w-8 h-px bg-stroke" />
             </div>
+
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-body font-light text-text-primary mb-4 leading-tight">
               Visual{' '}
               <em className="font-display" style={{ fontStyle: 'italic' }}>
                 playground
               </em>
             </h2>
+
             <p className="text-sm text-muted max-w-sm mx-auto mb-8">
               Motion, art direction, and experimental visual work from the DUTS
               studio.
             </p>
+
             <Link
               to="/portfolio"
               className="gb-ghost pointer-events-auto inline-flex items-center gap-2 rounded-full text-sm px-6 py-3"
@@ -102,12 +107,65 @@ export default function Explorations() {
         </div>
 
         {/* Layer 2 — Parallax columns */}
-        <div className="absolute inset-0 z-0 md:z-20 pointer-events-none">
-          <div className="relative w-full h-full max-w-[1400px] mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-2 gap-1 sm:gap-12 md:gap-40 h-full">
+        <div className="absolute inset-0 z-10 md:z-20 pointer-events-none">
+          <div className="relative w-full h-full max-w-[1400px] mx-auto px-2 sm:px-6">
+            <div className="grid grid-cols-2 gap-14 sm:gap-12 md:gap-40 h-full">
               {/* Column 1 — left */}
-              <div className="flex flex-col gap-1.5 sm:gap-8 pointer-events-auto pt-24">
-                {col1Items.map((item, idx) => (
+                <div className="flex flex-col gap-20 sm:gap-24 md:gap-28 pointer-events-auto pt-28 md:pt-36">
+                  {col1Items.map((item, idx) => {
+                    const secondCardOffset = idx === 1 ? 180 : 0
+
+                    return (
+                      <Link
+                        key={item.slug}
+                        to={`/work/${item.slug}`}
+                        data-exploration-card
+                        data-order={idx}
+                        data-fromy={Number(item.parallaxFrom ?? 100) + secondCardOffset}
+                        data-toy={Number(item.parallaxTo ?? -120) + secondCardOffset}
+                        data-start={item.startOffset}
+                        data-end={item.endOffset}
+                        data-rotation={item.rotation}
+                        className="group relative aspect-square w-full max-w-[120px] sm:max-w-[220px] md:max-w-[320px] rounded-2xl overflow-hidden cursor-pointer will-change-transform"
+                        aria-label={`View project — ${item.title}`}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+
+                        <div className="absolute inset-0 bg-bg/70 backdrop-blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div
+                            className="rounded-full p-[2px]"
+                            style={{
+                              background:
+                                'linear-gradient(90deg, #89AACC 0%, #4E85BF 100%)',
+                            }}
+                          >
+                            <div className="bg-white text-bg rounded-full px-5 py-2 text-sm font-medium whitespace-nowrap">
+                              View project —{' '}
+                              <em
+                                className="font-display"
+                                style={{ fontStyle: 'italic' }}
+                              >
+                                {item.title}
+                              </em>{' '}
+                              <span className="text-xs text-black/60 ml-2">
+                                {item.category}
+                              </span>{' '}
+                              ↗
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              {/* Column 2 — right */}
+              <div className="flex flex-col gap-6 sm:gap-10 pointer-events-auto pt-36 sm:pt-64 items-end">
+                {col2Items.map((item, idx) => (
                   <Link
                     key={item.slug}
                     to={`/work/${item.slug}`}
@@ -118,57 +176,7 @@ export default function Explorations() {
                     data-start={item.startOffset}
                     data-end={item.endOffset}
                     data-rotation={item.rotation}
-                    className="group relative aspect-square w-full max-w-[150px] sm:max-w-[220px] md:max-w-[320px] rounded-2xl overflow-hidden cursor-pointer will-change-transform"
-                    aria-label={`View project — ${item.title}`}
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-
-                    <div className="absolute inset-0 bg-bg/70 backdrop-blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div
-                        className="rounded-full p-[2px]"
-                        style={{
-                          background:
-                            'linear-gradient(90deg, #89AACC 0%, #4E85BF 100%)',
-                        }}
-                      >
-                        <div className="bg-white text-bg rounded-full px-5 py-2 text-sm font-medium whitespace-nowrap">
-                          View project —{' '}
-                          <em
-                            className="font-display"
-                            style={{ fontStyle: 'italic' }}
-                          >
-                            {item.title}
-                          </em>{' '}
-                          <span className="text-xs text-black/60 ml-2">
-                            {item.category}
-                          </span>{' '}
-                          ↗
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Column 2 — right */}
-              <div className="flex flex-col gap-1.5 sm:gap-8 pointer-events-auto pt-48 sm:pt-64 items-end">
-                {col2Items.map((item, idx) => (
-                  <Link
-                    key={item.slug}
-                    to={`/work/${item.slug}`}
-                    data-exploration-card
-                    data-order={idx + 3}
-                    data-fromy={item.parallaxFrom}
-                    data-toy={item.parallaxTo}
-                    data-start={item.startOffset}
-                    data-end={item.endOffset}
-                    data-rotation={item.rotation}
-                    className="group relative aspect-square w-full max-w-[150px] sm:max-w-[220px] md:max-w-[320px] rounded-2xl overflow-hidden cursor-pointer will-change-transform"
+                    className="group relative aspect-square w-full max-w-[120px] sm:max-w-[220px] md:max-w-[320px] rounded-2xl overflow-hidden cursor-pointer will-change-transform"
                     aria-label={`View project — ${item.title}`}
                   >
                     <img

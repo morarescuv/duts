@@ -9,6 +9,10 @@ import Portfolio from './pages/Portfolio'
 import PlatefulProject from './pages/PlatefulProject'
 import Achievements from './pages/Achievements'
 import AmiabilProject from './pages/AmiabilProject'
+import LogoFolioProject from './pages/LogoFolioProject'
+import AgroDataProject from './pages/AgroDataProject'
+import AcumProject from './pages/AcumProject'
+import FermaMaxianProject from './pages/FermaMaxianProject'
 
 function Page({ children }: { children: ReactNode }) {
   return (
@@ -50,6 +54,38 @@ function AnimatedRoutes() {
           element={
             <Page>
               <AmiabilProject />
+            </Page>
+          }
+        />
+        <Route
+          path="/work/logo-folio"
+          element={
+            <Page>
+              <LogoFolioProject />
+            </Page>
+          }
+        />
+        <Route
+          path="/work/agrodata"
+          element={
+            <Page>
+              <AgroDataProject />
+            </Page>
+          }
+        />
+        <Route
+          path="/work/brand-identity"
+          element={
+            <Page>
+              <AcumProject />
+            </Page>
+          }
+        />
+        <Route
+          path="/work/saas-demo"
+          element={
+            <Page>
+              <FermaMaxianProject />
             </Page>
           }
         />

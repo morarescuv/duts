@@ -113,12 +113,16 @@ export default function Hero() {
 
         {/* CTA */}
         <div className="blur-in inline-flex gap-4 flex-wrap justify-center">
-          <button className="gb-solid rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
-            See Works
-          </button>
-          <button className="gb-outline rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
-            Reach out...
-          </button>
+          <a href="/portfolio">
+            <button className="gb-solid rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
+              See Works
+            </button>
+          </a>
+          <a href="mailto:morarescu.business@gmail.com">
+            <button className="gb-outline rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
+              Reach out...
+            </button>
+          </a>
         </div>
       </div>
 
