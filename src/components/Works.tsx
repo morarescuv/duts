@@ -11,12 +11,12 @@ const TEAM = [
   {
     name: 'SANDU ROTARI',
     title: 'COPYWRITER / MARKETER',
-    image: publicAsset('team/member-2.jpg'),
+    image: publicAsset('team/member-3.jpg'),
   },
   {
     name: 'DANA MOLDOVANU',
     title: 'FULLSTACK DEVELOPER',
-    image: publicAsset('team/member-3.jpg'),
+    image: publicAsset('team/member-2.jpg'),
   },
 ]
 
