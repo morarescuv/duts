@@ -4,20 +4,17 @@ const TEAM = [
   {
     name: 'VLAD MORARESCU',
     title: 'PROJECT MANAGER / SENIOR DESIGNER',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80',
-  },
-  {
-    name: 'DANA MOLDOVANU',
-    title: 'FULLSTACK DEVELOPER',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80',
+    image: '/team/member-1.JPG',
   },
   {
     name: 'SANDU ROTARI',
     title: 'COPYWRITER / MARKETER',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80',
+    image: '/team/member-2.jpg',
+  },
+  {
+    name: 'DANA MOLDOVANU',
+    title: 'FULLSTACK DEVELOPER',
+    image: '/team/member-3.jpg',
   },
 ]
 
