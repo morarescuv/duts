@@ -1,6 +1,7 @@
-
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 const ENTRIES = [
   {
@@ -8,7 +9,7 @@ const ENTRIES = [
     title: 'AgroData at GigaHack Hackathon Deep Tech 2025',
     readTime: '5 min read',
     date: 'Sep 2025',
-    image: 'public/agrodata/general-presentation.jpg',
+    image: publicAsset('agrodata/general-presentation.jpg'),
     href: '/work/agrodata',
   },
   {
@@ -16,7 +17,7 @@ const ENTRIES = [
     title: 'Co-worked with the Ministry of Internal Affairs',
     readTime: '4 min read',
     date: 'Mar 2025',
-    image: 'public/amiabil/payment.png',
+    image: publicAsset('amiabil/payment.png'),
     href: '/work/amiabil',
   },
   {
@@ -24,7 +25,7 @@ const ENTRIES = [
     title: 'Acum Community - Re-branding',
     readTime: '6 min read',
     date: 'Feb 2025',
-    image: 'public/ACUM/Artboard 1.png',
+    image: publicAsset('ACUM/Artboard 1.png'),
     href: '/work/brand-identity',
   },
   

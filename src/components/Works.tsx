@@ -1,20 +1,22 @@
 import { motion } from 'framer-motion'
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 const TEAM = [
   {
     name: 'VLAD MORARESCU',
     title: 'PROJECT MANAGER / SENIOR DESIGNER',
-    image: '/team/member-1.JPG',
+    image: publicAsset('team/member-1.JPG'),
   },
   {
     name: 'SANDU ROTARI',
     title: 'COPYWRITER / MARKETER',
-    image: '/team/member-2.jpg',
+    image: publicAsset('team/member-2.jpg'),
   },
   {
     name: 'DANA MOLDOVANU',
     title: 'FULLSTACK DEVELOPER',
-    image: '/team/member-3.jpg',
+    image: publicAsset('team/member-3.jpg'),
   },
 ]
 
