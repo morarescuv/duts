@@ -1,32 +1,48 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 const ACHIEVEMENTS = [
   {
     title: 'Winners of Deeptech Gigahack',
     detail: 'Biggest hackathon in the Republic of Moldova.',
+    photos: [
+      publicAsset('achievements/GigaHack/IMG_3503.JPG'),
+      publicAsset('achievements/GigaHack/IMG_3504.JPG'),
+    ],
   },
   {
     title: 'Winners of Vision 360 Bootcamp',
     detail: 'Organized by Dreamups and Sigmoid.',
+    photos: [publicAsset('achievements/vision360/IMG_3506.JPG')],
   },
   {
     title: 'Graduated Deeptech Academy',
     detail: 'Program by Technovator.',
+    photos: [publicAsset('achievements/deeptech academy/IMG_3508.PNG')],
   },
   {
     title: 'Co-worked with the Ministry of Internal Affairs',
     detail: 'Contributed to the Amiabil platform.',
     href: '/work/amiabil',
     linkLabel: 'View Amiabil project',
+    photos: [
+      publicAsset('achievements/Ministry of Internal Affairs/DSC_4240.JPG'),
+    ],
   },
   {
     title: '2nd place at Ecologic Innovative Solutions',
     detail: 'Competition by UNDP.',
+    photos: [publicAsset('achievements/Ecologic hackathon/IMG_3507.PNG')],
   },
   {
     title: '2nd place at DIGIEDUHACK',
     detail: 'Recognized for innovative education-focused solutions.',
+    photos: [
+      publicAsset('achievements/Digieduhack/IMG_3509.PNG'),
+      publicAsset('achievements/Digieduhack/IMG_3510.PNG'),
+    ],
   },
 ]
 
@@ -75,6 +91,23 @@ export default function Achievements() {
                 <p className="text-sm md:text-base text-muted leading-relaxed max-w-xl">
                   {achievement.detail}
                 </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8">
+                  {achievement.photos.map((photo, photoIndex) => (
+                    <div
+                      key={photo}
+                      className={`overflow-hidden rounded-[24px] border border-stroke bg-bg ${
+                        achievement.photos.length === 1 ? 'sm:col-span-2' : ''
+                      }`}
+                    >
+                      <img
+                        src={photo}
+                        alt={`${achievement.title} photo ${photoIndex + 1}`}
+                        loading="lazy"
+                        className="w-full h-52 sm:h-60 md:h-72 object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
                 {achievement.href && achievement.linkLabel && (
                   <Link
                     to={achievement.href}

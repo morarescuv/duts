@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import Index from './pages/Index'
@@ -29,6 +29,10 @@ function Page({ children }: { children: ReactNode }) {
 
 function AnimatedRoutes() {
   const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [location.pathname])
 
   return (
     <AnimatePresence mode="wait">
