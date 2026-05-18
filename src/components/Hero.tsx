@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Hls from 'hls.js'
 import { gsap } from 'gsap'
+import { Link } from 'react-router-dom'
 
 const ROLES = ['Branding', 'Product', 'Web', 'AI']
 const HLS_SRC =
@@ -15,13 +16,39 @@ export default function Hero() {
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+
+    const playVideo = () => {
+      void video.play().catch(() => {})
+    }
+
+    video.muted = true
+    video.defaultMuted = true
+    video.playsInline = true
+
     if (Hls.isSupported()) {
       const hls = new Hls({ startLevel: -1 })
       hls.loadSource(HLS_SRC)
       hls.attachMedia(video)
-      return () => hls.destroy()
+      hls.on(Hls.Events.MANIFEST_PARSED, playVideo)
+      video.addEventListener('canplay', playVideo)
+      video.addEventListener('pause', playVideo)
+      return () => {
+        video.removeEventListener('canplay', playVideo)
+        video.removeEventListener('pause', playVideo)
+        hls.destroy()
+      }
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = HLS_SRC
+      video.addEventListener('loadedmetadata', playVideo)
+      video.addEventListener('canplay', playVideo)
+      video.addEventListener('pause', playVideo)
+      video.load()
+    }
+
+    return () => {
+      video.removeEventListener('loadedmetadata', playVideo)
+      video.removeEventListener('canplay', playVideo)
+      video.removeEventListener('pause', playVideo)
     }
   }, [])
 
@@ -71,6 +98,7 @@ export default function Hero() {
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute top-1/2 left-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2"
       />
 
@@ -112,11 +140,11 @@ export default function Hero() {
 
         {/* CTA */}
         <div className="blur-in inline-flex gap-4 flex-wrap justify-center">
-          <a href="/portfolio">
+          <Link to="/portfolio">
             <button className="gb-solid rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
               See Works
             </button>
-          </a>
+          </Link>
           <a href="mailto:morarescu.business@gmail.com">
             <button className="gb-outline rounded-full text-sm px-6 sm:px-7 py-3 sm:py-3.5 hover:scale-105">
               Reach out...
