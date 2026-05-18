@@ -7,6 +7,7 @@ import Works from '../components/Works'
 import Journal from '../components/Journal'
 import Explorations from '../components/Explorations'
 import Services from '../components/Services'
+import DiscoveryCall from '../components/DiscoveryCall'
 import Footer from '../components/Footer'
 
 export default function Index() {
@@ -43,6 +44,7 @@ export default function Index() {
             <Explorations />
             <Works />
             <Services />
+            <DiscoveryCall />
             <Journal />
           </main>
           <Footer />

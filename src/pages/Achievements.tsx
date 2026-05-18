@@ -103,7 +103,7 @@ export default function Achievements() {
                         src={photo}
                         alt={`${achievement.title} photo ${photoIndex + 1}`}
                         loading="lazy"
-                        className="w-full h-52 sm:h-60 md:h-72 object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                        className="w-full h-52 sm:h-60 md:h-72 object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
                   ))}
